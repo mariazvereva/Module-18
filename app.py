@@ -6,9 +6,9 @@ bot = telebot.TeleBot(TOKEN)
 
 @bot.message_handler(commands=['start','help'])
 def help(message: telebot.types.Message):
-    text = "Чтобы начать работу бота, введите комманду в следующем формате: \n<Имя валюты>  " \
-"<в какую валюту перевести>  " \
-"<количество переводимой валюты>\n Увидеть список всех доступных валют: /values"
+    text = "Чтобы начать работу бота, введите комманду в следующем формате: \n<Имя валюты (на русскам язке с маленькой буквы>  " \
+"<в какую валюту перевести (на русскам язке с маленькой буквы>  " \
+"<количество переводимой валюты (цифрами)>\n Увидеть список всех доступных для конвертации валют: /values"
     bot.reply_to(message, text)
 
 
@@ -40,4 +40,4 @@ def get_price(message: telebot.types.Message):
         bot.send_message(message.chat.id, text)
 
 
-bot.polling()
+bot.polling(non_stop=True)
